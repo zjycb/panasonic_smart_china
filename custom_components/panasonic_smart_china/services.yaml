@@ -2,6 +2,14 @@ set_wind_direction:
   name: 设置风向
   description: 设置浴霸风向 (1-6)
   fields:
+    entity_id:
+      name: 目标浴霸
+      description: 要控制的浴霸 climate 实体（仅配置了一台设备时可省略）
+      required: false
+      example: climate.fv_54ba1c
+      selector:
+        entity:
+          domain: climate
     direction:
       name: 风向值
       description: 1-6 分别对应不同风向
@@ -17,6 +25,14 @@ set_wind_kind:
   name: 设置风种
   description: 设置浴霸风种 (1=集中, 2=扩散)
   fields:
+    entity_id:
+      name: 目标浴霸
+      description: 要控制的浴霸 climate 实体（仅配置了一台设备时可省略）
+      required: false
+      example: climate.fv_54ba1c
+      selector:
+        entity:
+          domain: climate
     kind:
       name: 风种值
       description: 1-2 分别对应集中/扩散
@@ -32,6 +48,14 @@ set_time:
   name: 设置定时
   description: 设置浴霸定时运行时间，小时和分钟全为0表示连续运行
   fields:
+    entity_id:
+      name: 目标浴霸
+      description: 要控制的浴霸 climate 实体（仅配置了一台设备时可省略）
+      required: false
+      example: climate.fv_54ba1c
+      selector:
+        entity:
+          domain: climate
     hours:
       name: 小时
       description: 定时的小时数 (0-23)
@@ -41,7 +65,7 @@ set_time:
       selector:
         number:
           min: 0
-          max: 23
+          max: 12
           step: 1
     minutes:
       name: 分钟
@@ -53,4 +77,64 @@ set_time:
         number:
           min: 0
           max: 59
+          step: 1
+
+set_mode_and_time:
+  name: 设置模式与时长
+  description: 同时切换浴霸模式和定时时长
+  fields:
+    entity_id:
+      name: 目标浴霸
+      description: 要控制的浴霸 climate 实体（仅配置了一台设备时可省略）
+      required: false
+      example: climate.fv_54ba1c
+      selector:
+        entity:
+          domain: climate
+    hvac_mode:
+      name: 模式
+      description: 目标模式（不支持 off，关机请用 climate.turn_off）
+      required: true
+      example: heat
+      selector:
+        select:
+          options:
+            - fan_only
+            - cool
+            - dry
+            - heat
+            - auto
+    minutes:
+      name: 分钟
+      description: 定时时长（分钟）；不填或 0 表示不改变当前定时
+      required: false
+      default: 0
+      example: 30
+      selector:
+        number:
+          min: 0
+          max: 720
+          step: 5
+
+set_gas_check:
+  name: 设置异味感应
+  description: 开关浴霸异味感应功能
+  fields:
+    entity_id:
+      name: 目标浴霸
+      description: 要控制的浴霸 climate 实体（仅配置了一台设备时可省略）
+      required: false
+      example: climate.fv_54ba1c
+      selector:
+        entity:
+          domain: climate
+    gas_check:
+      name: 开关
+      description: 1=开，0=关
+      required: true
+      example: 1
+      selector:
+        number:
+          min: 0
+          max: 1
           step: 1
