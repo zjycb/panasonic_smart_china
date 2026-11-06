@@ -1,0 +1,28 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "登录松下账号",
+        "description": "请输入您的松下智能家电 App (中国版) 账号密码。",
+        "data": {
+          "username": "手机号",
+          "password": "密码"
+        }
+      },
+      "device": {
+        "title": "选择设备",
+        "description": "请选择您要添加的松下浴霸",
+        "data": {
+          "deviceId": "选择浴霸设备"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "登录失败，请检查账号密码",
+      "no_devices_found": "未找到绑定设备"
+    },
+    "abort": {
+      "already_configured": "设备已添加"
+    }
+  }
+}
