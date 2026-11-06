@@ -1,0 +1,56 @@
+set_wind_direction:
+  name: 设置风向
+  description: 设置浴霸风向 (1-6)
+  fields:
+    direction:
+      name: 风向值
+      description: 1-6 分别对应不同风向
+      required: true
+      example: 6
+      selector:
+        number:
+          min: 1
+          max: 6
+          step: 1
+
+set_wind_kind:
+  name: 设置风种
+  description: 设置浴霸风种 (1=集中, 2=扩散)
+  fields:
+    kind:
+      name: 风种值
+      description: 1-2 分别对应集中/扩散
+      required: true
+      example: 1
+      selector:
+        number:
+          min: 1
+          max: 2
+          step: 1
+
+set_time:
+  name: 设置定时
+  description: 设置浴霸定时运行时间，小时和分钟全为0表示连续运行
+  fields:
+    hours:
+      name: 小时
+      description: 定时的小时数 (0-23)
+      required: false
+      default: 0
+      example: 0
+      selector:
+        number:
+          min: 0
+          max: 23
+          step: 1
+    minutes:
+      name: 分钟
+      description: 定时的分钟数 (0-59)
+      required: false
+      default: 0
+      example: 30
+      selector:
+        number:
+          min: 0
+          max: 59
+          step: 1
